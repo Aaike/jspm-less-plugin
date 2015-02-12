@@ -1,0 +1,10 @@
+{
+  "main": "less",
+  "registry": "jspm",
+  "dependencies": {
+    "less-dist": "^2.3.1"
+  },
+  "directories": {
+    "lib": "lib"
+  }
+}
