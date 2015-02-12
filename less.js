@@ -4,11 +4,12 @@ if (typeof window !== 'undefined') {
 
   var head = document.getElementsByTagName('head')[0];
 
-  // get all link tags in the page
-  var links = document.getElementsByTagName('link');
-  var linkHrefs = [];
-  for (var i = 0; i < links.length; i++) {
-    linkHrefs.push(links[i].href);
+  // get all injected style tags in the page
+  var styles = document.getElementsByTagName('style');
+  var styleIds = [];
+  for (var i = 0; i < styles.length; i++) {
+    if(!styles[i].hasAttribute("data-href")) continue;
+    styleIds.push(styles[i].getAttribute("data-href"));
   }
 
   var loadStyle = function(url) {
@@ -26,6 +27,11 @@ if (typeof window !== 'undefined') {
             //inject it into the head as a style tag
             var style = document.createElement('style');
             style.textContent = data.css;
+            style.setAttribute('type','text/css');
+            //store original type in the data-type attribute
+            style.setAttribute('data-type','text/less');
+            //store the url in the data-href attribute
+            style.setAttribute('data-href',url);
             head.appendChild(style);
             resolve('');
           });
@@ -46,8 +52,8 @@ if (typeof window !== 'undefined') {
 
   exports.fetch = function(load) {
     // don't reload styles loaded in the head
-    for (var i = 0; i < linkHrefs.length; i++)
-      if (load.address == linkHrefs[i])
+    for (var i = 0; i < styleIds.length; i++)
+      if (load.address == styleIds[i])
         return '';
     return loadStyle(load.address);
   }
