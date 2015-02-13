@@ -1,4 +1,4 @@
-var less = require('less-dist');
+var less = require('less.js');
 
 if (typeof window !== 'undefined') {
 
