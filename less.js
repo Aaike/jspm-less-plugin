@@ -23,7 +23,10 @@ if (typeof window !== 'undefined') {
           var data = request.responseText;
 
           //render it using less
-          less.render(data).then(function(data){
+          less.render(data, {
+            filename: url,
+            rootpath: url.replace(/[^\/]*$/,'')
+          }).then(function(data){
             //inject it into the head as a style tag
             var style = document.createElement('style');
             style.textContent = data.css;
