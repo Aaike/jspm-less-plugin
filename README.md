@@ -24,4 +24,3 @@ ES6:
 ##TODO
 
 - support for `@import`
-- add a way to specify options for the less renderer
