@@ -22,11 +22,12 @@ if (typeof window !== 'undefined') {
           // Success!
           var data = request.responseText;
 
+          var options = window.less || {};
+          options.filename = url;
+          options.rootpath = url.replace(/[^\/]*$/,'');
+
           //render it using less
-          less.render(data, {
-            filename: url,
-            rootpath: url.replace(/[^\/]*$/,'')
-          }).then(function(data){
+          less.render(data,options).then(function(data){
             //inject it into the head as a style tag
             var style = document.createElement('style');
             style.textContent = data.css;
