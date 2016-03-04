@@ -3,3 +3,7 @@
 
 jspm_packages
 config.js
+index*.html
+test.less
+test.js
+bundle.js
