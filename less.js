@@ -1,7 +1,6 @@
 
 
 if (typeof window !== 'undefined') {
-    console.log(window.less);
     var less = require('npm:less/lib/less-browser/index')(window, window.less || {})
     var head = document.getElementsByTagName('head')[0];
 
