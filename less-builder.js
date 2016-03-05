@@ -29,7 +29,6 @@ module.exports = function bundle(loads, opts) {
 	}, '');
 
 	return loader['import']('clean-css').then(function(CleanCSS){
-		console.log("loaded clean-css");
 		return new Promise(function(resolve, reject) {
 				less.render(lessOutput,{compress: true}).then(function(data){
 					var cssOutput = data.css;
