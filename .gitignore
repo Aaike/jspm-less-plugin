@@ -4,6 +4,6 @@
 jspm_packages
 config.js
 index*.html
-test.less
+test*.less
 test.js
-bundle.js
+bundle.js*
